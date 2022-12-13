@@ -1788,7 +1788,20 @@ class aK extends a.default.PureComponent {
   constructor(a) {
     super(a),
       (this.clearModal = (a) => {
-        a && this.setState((b) => ({ ...b, modals: b.modals.filter((b) => b.id !== a) }));
+        a &&
+          this.setState((b) => {
+            let c = b.modals.filter((b) => {
+              var c, d;
+              return (
+                b.id === a &&
+                  "function" ==
+                    typeof (null === (c = b.options) || void 0 === c ? void 0 : c.afterClose) &&
+                  (null === (d = b.options) || void 0 === d || d.afterClose()),
+                b.id !== a
+              );
+            });
+            return { ...b, modals: c };
+          });
       }),
       (this.hide = (c) => {
         let { modals: a } = this.state,
@@ -1822,7 +1835,7 @@ class aK extends a.default.PureComponent {
           {
             visible: a.visible,
             closable: !1,
-            onCancel: () => !1,
+            onCancel: () => this.hide(a.id),
             mask: !0,
             maskClosable: !0,
             footer: null,

@@ -15,15 +15,7 @@
   position: relative;
   width: 335px;
 }
-.text10 {
-  color: #ffffff;
-  flex: none;
-  flex-grow: 1px;
-  font-family: Noto Sans JP;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 100%;
-  position: relative;
-  text-align: center;
-  vertical-align: top;
+.commonbtn_1 {
+  height: auto;
+  width: 100%;
 }

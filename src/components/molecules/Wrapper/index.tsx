@@ -16,10 +16,14 @@ function WrapperMolecule(props: WrapperMoleculeProps): JSX.Element {
       responsiveVisibility={get(props, "responsiveVisibility")}
     >
       <Box className={styles.title15}>
-        <Text className={styles.text15}>Label</Text>
+        <Text className={styles.text15} textType={"Text"}>
+          Label
+        </Text>
       </Box>
       <Box className={styles.input17}>
-        <Text className={styles.text17}>Placeholder</Text>
+        <Text className={styles.text17} textType={"Text"}>
+          Placeholder
+        </Text>
       </Box>
     </Box>
   );

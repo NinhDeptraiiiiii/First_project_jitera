@@ -4,16 +4,56 @@ import { DefaultPageProps } from "@interfaces/page";
 import get from "lodash/get";
 import Background from "@components/molecules/Background";
 import Iconssafarichevronbackward from "@components/molecules/Iconssafarichevronbackward";
-import Wrapper from "@components/molecules/Wrapper";
-import StateDefaultPostIconFALSETagFALSEPreIconFALSE from "@components/molecules/StateDefaultPostIconFALSETagFALSEPreIconFALSE";
-import Property1active from "@components/molecules/Property1active";
-import { Page, Box, Text } from "@jitera/jitera-web-ui-library";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useNavigateService } from "@services/navigate";
+import { useNoteService } from "@services/note";
+import { Page, Box, Text, Row, Col, Input, Button, Toast } from "@jitera/jitera-web-ui-library";
 import styles from "./styles.module.css";
 type CreateNotePageProps = DefaultPageProps & {
   pageName?: string;
   className?: string;
 };
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface Form1FormData {
+  content: string;
+}
 function CreateNotePage(props: CreateNotePageProps): JSX.Element {
+  const navigateService = useNavigateService();
+  const noteService = useNoteService();
+  const validationForm1Schema = useMemo(
+    () =>
+      yup.object().shape({
+        content: yup.string().required("content is a required field"),
+      }),
+    []
+  );
+  const formForm1 = useForm<Form1FormData>({
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    resolver: yupResolver(validationForm1Schema),
+    shouldFocusError: true,
+    mode: "onChange",
+    reValidateMode: "onChange",
+  });
+  const { errors: formForm1Errors } = formForm1.formState;
+
+  const handleText5 = async () => {
+    try {
+      navigateService.goBack();
+    } catch (e: unknown) {}
+  };
+  const handleForm1Button = async (values?: Form1FormData) => {
+    try {
+      const responsePostApiNotes = await noteService.postApiNotes.fetch({
+        notes: { content: "[text]", user_id: "[text]" },
+      });
+      Toast.success("Create successfull");
+    } catch (e: unknown) {
+      Toast.success("Create Failed");
+    }
+  };
   return (
     <Page className={styles.page_container}>
       <Background className={styles.background1} />
@@ -21,19 +61,60 @@ function CreateNotePage(props: CreateNotePageProps): JSX.Element {
         <Box className={styles.wrapper8}>
           <Box className={styles.info_header5}>
             <Iconssafarichevronbackward className={styles.iconssafarichevronbackward1} />
-            <Text className={styles.text5} textType={"Text"}>
+            <Text className={styles.text5} textType={"Text"} onClick={handleText5}>
               Back
             </Text>
           </Box>
           <Box className={styles.card8}>
             <Text className={styles.text7} textType={"Text"}>
-              Edit note
+              Create note
             </Text>
-            <Box className={styles.form8}>
-              <Wrapper className={styles.text_field1} />
-              <StateDefaultPostIconFALSETagFALSEPreIconFALSE className={styles.input1} />
-              <Property1active className={styles.common_button1} />
-            </Box>
+            <Row align={"top"} gutter={[30, 30]} justify={"start"} className={styles.row_1}>
+              <Col md={Number(24)} xl={Number(24)} xs={Number(24)}>
+                <Box className={styles.form_1}>
+                  <Box className={styles.input_2_container}>
+                    <Box className={styles.input_2_inner}>
+                      <Text className={styles.input_2_label} textType={"Text"}>
+                        Content
+                      </Text>
+                      <Text className={styles.input_2_required} textType={"Text"}>
+                        *
+                      </Text>
+                    </Box>
+                    <Controller
+                      control={formForm1.control}
+                      render={({
+                        field: { onChange, onBlur, value },
+                        fieldState: { isTouched, error },
+                      }: any) => {
+                        return (
+                          <Input
+                            inputStyle={styles.content_input}
+                            placeholder={"Enter your note!"}
+                            className={styles.content}
+                            onChange={onChange}
+                            value={value}
+                          />
+                        );
+                      }}
+                      name="content"
+                    />
+                    <Box className={styles.input_2_error_message_container}>
+                      <Text className={styles.input_2_error_message_text} textType={"Text"}>
+                        {get(formForm1Errors, "content.message")}
+                      </Text>
+                    </Box>
+                  </Box>
+                  <Button
+                    buttonType={"primary"}
+                    className={styles.form_1_button}
+                    onClick={formForm1.handleSubmit(handleForm1Button)}
+                  >
+                    Create
+                  </Button>
+                </Box>
+              </Col>
+            </Row>
           </Box>
         </Box>
       </Box>

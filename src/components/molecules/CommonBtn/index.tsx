@@ -4,15 +4,15 @@ import { DefaultPageProps } from "@interfaces/page";
 import get from "lodash/get";
 import { Box, Text } from "@jitera/jitera-web-ui-library";
 import styles from "./styles.module.css";
-type Property1activeMoleculeProps = DefaultPageProps & {
+type CommonBtnMoleculeProps = DefaultPageProps & {
   pageName?: string;
   className?: string;
   responsiveVisibility?: string[];
   label?: string;
   onClick?: () => any;
 };
-function Property1activeMolecule(props: Property1activeMoleculeProps): JSX.Element {
-  const handleBox0 = async () => {
+function CommonBtnMolecule(props: CommonBtnMoleculeProps): JSX.Element {
+  const handleBox2 = async () => {
     try {
       const { onClick } = props;
       return onClick && onClick();
@@ -20,15 +20,15 @@ function Property1activeMolecule(props: Property1activeMoleculeProps): JSX.Eleme
   };
   return (
     <Box
-      className={`${styles.page_container} ${get(props, "className")}`}
+      className={`${styles.molecule} ${get(props, "className")}`}
       responsiveVisibility={get(props, "responsiveVisibility")}
     >
-      <Box className={styles.box_0} onClick={handleBox0}>
-        <Text className={styles.text_0} textType={"Text"}>
+      <Box className={styles.box_2} onClick={handleBox2}>
+        <Text className={styles.text_2} textType={"Text"}>
           {get(props, "label")}
         </Text>
       </Box>
     </Box>
   );
 }
-export default Property1activeMolecule;
+export default CommonBtnMolecule;

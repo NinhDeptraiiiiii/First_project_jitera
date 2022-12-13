@@ -1,14 +1,23 @@
 .page_container {
-  align-items: center;
+  align-items: flex-start;
   background-color: #f8f8f8;
   display: flex;
   flex-direction: column;
   height: 800px;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
   width: 1440px;
 }
-.container9 {
+.background1 {
+  flex: none;
+  flex-grow: 0px;
+  height: 800px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 1440px;
+}
+.container7 {
   align-items: center;
   display: flex;
   flex: none;
@@ -17,32 +26,23 @@
   gap: 40px;
   height: 800px;
   justify-content: flex-start;
+  left: 0px;
   padding-bottom: 140px;
   padding-top: 140px;
-  position: relative;
-  width: 1440px;
-}
-.background1 {
-  flex: none;
-  flex-grow: 0px;
-  height: 800px;
-  left: 4.547473508864641e-13px;
   position: absolute;
   top: 0px;
   width: 1440px;
 }
-.wrapper9 {
+.wrapper7 {
   align-items: flex-start;
   display: flex;
   flex: none;
   flex-direction: column;
   flex-grow: 0px;
   gap: 24px;
-  height: 576px;
+  height: 410px;
   justify-content: flex-start;
-  left: 470px;
-  position: absolute;
-  top: 140px;
+  position: relative;
   width: 500px;
 }
 .text4 {
@@ -58,7 +58,7 @@
   text-align: left;
   vertical-align: middle;
 }
-.card9 {
+.card7 {
   align-items: center;
   align-self: stretch;
   background-color: #ffffff;
@@ -68,7 +68,7 @@
   flex-direction: column;
   flex-grow: 0px;
   gap: 20px;
-  height: 520px;
+  height: 354px;
   justify-content: flex-start;
   padding-bottom: 32px;
   padding-left: 20px;
@@ -90,19 +90,6 @@
   text-align: left;
   vertical-align: middle;
 }
-.sign_up_form8 {
-  align-items: flex-start;
-  align-self: stretch;
-  display: flex;
-  flex: none;
-  flex-direction: column;
-  flex-grow: 0px;
-  gap: 12px;
-  height: 374px;
-  justify-content: flex-start;
-  position: relative;
-  width: 460px;
-}
 .row_1 {
   height: 300px;
   margin-left: 0px;
@@ -115,29 +102,28 @@
   margin-right: auto;
   max-width: 600px;
 }
-.input_1_container {
+.box_5 {
   background-color: transparent;
-  margin-bottom: 24px;
+  margin-top: 10px;
   width: 100%;
 }
-.input_1_inner {
+.box_0 {
   background-color: transparent;
   margin-bottom: 10px;
   margin-top: 10px;
   width: 100%;
 }
-.input_1_label {
-  color: #000;
-  display: inline;
-  font-weight: bold;
-  margin-right: 10px;
-}
-.input_1_required {
+.text_4 {
   color: #f00;
   display: inline;
   font-weight: bold;
 }
-.email_input_input {
+.text_0 {
+  color: #f00;
+  display: inline;
+  font-weight: bold;
+}
+.input_1_input {
   background-color: white;
   border-color: #d9d9d9;
   border-style: solid;
@@ -145,43 +131,38 @@
   font-weight: 500;
   width: 100%;
 }
-.email_input {
+.input_1 {
   background-color: transparent;
   width: 100%;
 }
-.input_1_error_message_container {
+.box_2 {
   background-color: transparent;
   margin-top: 10px;
   width: 100%;
 }
-.email_error_message_text {
+.text_2 {
   color: #f00;
   display: inline;
   font-weight: bold;
 }
-.input_2_container {
+.box_3 {
   background-color: transparent;
   margin-bottom: 24px;
   width: 100%;
 }
-.input_2_inner {
+.box_4 {
   background-color: transparent;
   margin-bottom: 10px;
   margin-top: 10px;
   width: 100%;
 }
-.input_2_label {
+.text_3 {
   color: #000;
   display: inline;
   font-weight: bold;
   margin-right: 10px;
 }
-.input_2_required {
-  color: #f00;
-  display: inline;
-  font-weight: bold;
-}
-.password_input_input {
+.input_0_input {
   background-color: white;
   border-color: #d9d9d9;
   border-style: solid;
@@ -189,21 +170,16 @@
   font-weight: 500;
   width: 100%;
 }
-.password_input {
+.input_0 {
   background-color: transparent;
   width: 100%;
 }
-.input_2_error_message_container {
-  background-color: transparent;
-  margin-top: 10px;
-  width: 100%;
-}
-.input_2_error_message_text {
+.text_5 {
   color: #f00;
   display: inline;
   font-weight: bold;
 }
-.text8 {
+.text_6 {
   align-self: stretch;
   color: #8d8d8d;
   flex: none;
@@ -232,7 +208,7 @@
   width: auto;
   cursor: pointer;
 }
-.text9 {
+.text_7 {
   align-self: stretch;
   color: #8d8d8d;
   flex: none;

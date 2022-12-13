@@ -17,7 +17,9 @@ function StateDefaultPostIconFALSETagFALSEPreIconFALSEMolecule(
       className={`${styles.page_container} ${get(props, "className")}`}
       responsiveVisibility={get(props, "responsiveVisibility")}
     >
-      <Text className={styles.text14}>入力してください</Text>
+      <Text className={styles.text14} textType={"Text"}>
+        入力してください
+      </Text>
     </Box>
   );
 }

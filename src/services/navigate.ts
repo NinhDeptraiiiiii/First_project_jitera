@@ -6,22 +6,38 @@ export const useNavigateService = () => {
 
   return {
     navigate: (url: string, params?: Record<string, string | number | undefined>) => {
-      navigateService.push({
-        pathname: parseParamUrl(url, params),
-        query: params,
-      });
+      if (navigateService) {
+        navigateService.push({
+          pathname: parseParamUrl(url, params),
+          query: params,
+        });
+      } else {
+        window.open(parseParamUrl(url, params), "_self");
+      }
     },
     replace: (url: string, params?: Record<string, string | number | undefined>) => {
-      navigateService.push({
-        pathname: parseParamUrl(url, params),
-        query: params,
-      });
+      if (navigateService) {
+        navigateService.replace({
+          pathname: parseParamUrl(url, params),
+          query: params,
+        });
+      } else {
+        window.open(parseParamUrl(url, params), "_self");
+      }
     },
     goBack: () => {
-      navigateService.back();
+      if (navigateService) {
+        navigateService.back();
+      } else {
+        history.back();
+      }
     },
     reload: () => {
-      navigateService.reload();
+      if (navigateService) {
+        navigateService.reload();
+      } else {
+        window.location.reload();
+      }
     },
     openExternalLink: (
       url: string,

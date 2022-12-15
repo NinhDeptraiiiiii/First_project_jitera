@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: !0 });
-var aR = require("react/jsx-runtime"),
+var aP = require("react/jsx-runtime"),
   g = require("react"),
   m = require("clsx"),
-  d = require("antd"),
+  e = require("antd"),
   n = require("react-icons/ai"),
   o = require("react-icons/bs"),
   p = require("react-icons/fa"),
@@ -16,7 +16,7 @@ var aR = require("react/jsx-runtime"),
   w = require("react-select"),
   x = require("moment"),
   y = require("react-slick"),
-  aS = require("@lexical/react/LexicalComposer"),
+  aQ = require("@lexical/react/LexicalComposer"),
   h = require("@lexical/code"),
   i = require("@lexical/link"),
   j = require("@lexical/list"),
@@ -25,23 +25,24 @@ var aR = require("react/jsx-runtime"),
   B = require("@lexical/react/LexicalHorizontalRuleNode"),
   k = require("@lexical/rich-text"),
   f = require("@lexical/table"),
-  aT = require("@lexical/react/LexicalComposerContext"),
-  aU = require("@lexical/react/useLexicalNodeSelection"),
-  aV = require("@lexical/utils"),
+  aR = require("@lexical/react/LexicalComposerContext"),
+  aS = require("@lexical/react/useLexicalNodeSelection"),
+  aT = require("@lexical/utils"),
   C = require("lexical"),
-  aW = require("@lexical/react/LexicalRichTextPlugin"),
-  aX = require("@lexical/react/LexicalContentEditable"),
-  aY = require("@tanstack/react-table"),
-  aZ = require("@dnd-kit/sortable"),
-  a$ = require("@dnd-kit/core"),
-  a_ = require("@dnd-kit/modifiers"),
-  a0 = require("@dnd-kit/utilities"),
-  a1 = require("rc-util/lib/React/render"),
+  aU = require("@lexical/react/LexicalRichTextPlugin"),
+  aV = require("@lexical/react/LexicalContentEditable"),
+  aW = require("@tanstack/react-table"),
+  aX = require("@dnd-kit/sortable"),
+  aY = require("@dnd-kit/core"),
+  aZ = require("@dnd-kit/modifiers"),
+  a$ = require("@dnd-kit/utilities"),
+  a_ = require("rc-util/lib/React/render"),
+  a0 = require("react-toastify"),
   D = require("react-otp-input");
 function c(a) {
   return a && "object" == typeof a && "default" in a ? a : { default: a };
 }
-function e(a) {
+function d(a) {
   if (a && a.__esModule) return a;
   var b = Object.create(null);
   return (
@@ -68,23 +69,23 @@ function e(a) {
   );
 }
 var a = c(g),
-  a2 = c(m),
-  a3 = e(n),
-  a4 = e(o),
-  a5 = e(p),
-  a6 = e(q),
-  a7 = e(r),
+  a1 = c(m),
+  a2 = d(n),
+  a3 = d(o),
+  a4 = d(p),
+  a5 = d(q),
+  a6 = d(r),
   b = c(s),
-  a8 = c(t),
-  a9 = c(u),
-  ba = c(v),
-  bb = c(w),
-  bc = c(x),
-  bd = c(y),
-  be = c(D);
-function bf({ className: b = "", responsiveVisibility: a = [] }) {
+  a7 = c(t),
+  a8 = c(u),
+  a9 = c(v),
+  ba = c(w),
+  bb = c(x),
+  bc = c(y),
+  bd = c(D);
+function be({ className: b = "", responsiveVisibility: a = [] }) {
   return {
-    classNames: a2.default(
+    classNames: a1.default(
       b,
       3 === a.length
         ? ""
@@ -96,12 +97,12 @@ function bf({ className: b = "", responsiveVisibility: a = [] }) {
 }
 const E = a.default.forwardRef((a, b) => {
   let { children: c, responsiveVisibility: d, className: e, ...f } = a,
-    { classNames: g } = bf({ className: e, responsiveVisibility: d });
-  return aR.jsx("div", { ...f, className: g, ref: b, children: c });
+    { classNames: g } = be({ className: e, responsiveVisibility: d });
+  return aP.jsx("div", { ...f, className: g, ref: b, children: c });
 });
 function F(b, c = {}) {
   return a.default.createElement(
-    b in a3 ? a3[b] : b in a4 ? a4[b] : b in a6 ? a6[b] : b in a5 ? a5[b] : b in a7 ? a7[b] : "",
+    b in a2 ? a2[b] : b in a3 ? a3[b] : b in a5 ? a5[b] : b in a4 ? a4[b] : b in a6 ? a6[b] : "",
     c
   );
 }
@@ -111,22 +112,22 @@ function G(a) {
 function H(a) {
   switch (a) {
     case exports.IconSet.Antd:
-      return Object.entries(a3);
+      return Object.entries(a2);
     case exports.IconSet.Bootstrap:
-      return Object.entries(a4);
+      return Object.entries(a3);
     case exports.IconSet.Feather:
-      return Object.entries(a6);
-    case exports.IconSet.FontAwesome:
       return Object.entries(a5);
+    case exports.IconSet.FontAwesome:
+      return Object.entries(a4);
     case exports.IconSet.Material:
-      return Object.entries(a7);
+      return Object.entries(a6);
     case exports.IconSet.All:
       return [
+        ...Object.entries(a2),
         ...Object.entries(a3),
+        ...Object.entries(a5),
         ...Object.entries(a4),
         ...Object.entries(a6),
-        ...Object.entries(a5),
-        ...Object.entries(a7),
       ];
     default:
       return G(a);
@@ -143,20 +144,20 @@ function H(a) {
   })(exports.IconSet || (exports.IconSet = {}));
 const I = a.default.forwardRef((a, b) => {
     let { className: c, style: d, iconName: e, color: f, size: g, responsiveVisibility: h } = a,
-      { classNames: i } = bf({ className: c, responsiveVisibility: h });
-    return aR.jsx("span", {
+      { classNames: i } = be({ className: c, responsiveVisibility: h });
+    return aP.jsx("span", {
       style: { display: "inline-block", verticalAlign: "middle", ...d },
       className: i,
       ref: b,
       children: F(e, { color: f, size: g }),
     });
   }),
-  bg = b.default.span`
+  bf = b.default.span`
   margin-left: ${(a) => a.hasIcon && "8px"};
 `,
   J = a.default.forwardRef((b, c) => {
     let {
-        buttonType: e = "primary",
+        buttonType: d = "primary",
         responsiveVisibility: f,
         iconProps: h,
         className: i,
@@ -164,27 +165,27 @@ const I = a.default.forwardRef((a, b) => {
         ...k
       } = b,
       a = g.useMemo(() => {
-        if (h) return aR.jsx(I, { ...h });
+        if (h) return aP.jsx(I, { ...h });
       }, [h]),
-      { classNames: l } = bf({ className: i, responsiveVisibility: f });
-    return aR.jsx(d.Button, {
-      type: e,
+      { classNames: l } = be({ className: i, responsiveVisibility: f });
+    return aP.jsx(e.Button, {
+      type: d,
       icon: a,
       ...k,
       className: l,
       ref: c,
-      children: aR.jsx(bg, { hasIcon: !!a, children: j }),
+      children: aP.jsx(bf, { hasIcon: !!a, children: j }),
     });
   }),
   K = a.default.forwardRef((a, b) => {
-    let { children: c, responsiveVisibility: e, className: f, ...g } = a,
-      { classNames: h } = bf({ className: f, responsiveVisibility: e });
-    return aR.jsx(d.Col, { ...g, className: h, ref: b, children: c });
+    let { children: c, responsiveVisibility: d, className: f, ...g } = a,
+      { classNames: h } = be({ className: f, responsiveVisibility: d });
+    return aP.jsx(e.Col, { ...g, className: h, ref: b, children: c });
   }),
   L = a.default.forwardRef((a, b) => {
     let { children: c, responsiveVisibility: d, className: e, ...f } = a,
-      { classNames: g } = bf({ className: e, responsiveVisibility: d });
-    return aR.jsx(t.Content, {
+      { classNames: g } = be({ className: e, responsiveVisibility: d });
+    return aP.jsx(t.Content, {
       ...f,
       className: g,
       prefixCls: "jitera-layout-content",
@@ -194,19 +195,19 @@ const I = a.default.forwardRef((a, b) => {
   }),
   M = a.default.forwardRef((a, b) => {
     let { children: c, style: d, responsiveVisibility: e, className: f, ...g } = a,
-      { classNames: h } = bf({ className: f, responsiveVisibility: e });
-    return aR.jsx("footer", { ...g, className: h, style: d, ref: b, children: c });
+      { classNames: h } = be({ className: f, responsiveVisibility: e });
+    return aP.jsx("footer", { ...g, className: h, style: d, ref: b, children: c });
   }),
   N = a.default.forwardRef((a, b) => {
     let { children: c, responsiveVisibility: d, className: e, ...f } = a,
-      { classNames: g } = bf({ className: e, responsiveVisibility: d });
-    return aR.jsx("div", { ...f, className: g, ref: b, children: c });
+      { classNames: g } = be({ className: e, responsiveVisibility: d });
+    return aP.jsx("div", { ...f, className: g, ref: b, children: c });
   }),
   O = N,
   P = a.default.forwardRef((a, b) => {
     let { children: c, responsiveVisibility: d, className: e, ...f } = a,
-      { classNames: g } = bf({ className: e, responsiveVisibility: d });
-    return aR.jsx(t.Header, {
+      { classNames: g } = be({ className: e, responsiveVisibility: d });
+    return aP.jsx(t.Header, {
       ...f,
       prefixCls: "jitera-layout-header",
       className: g,
@@ -216,8 +217,8 @@ const I = a.default.forwardRef((a, b) => {
   }),
   Q = a.default.forwardRef((a, b) => {
     let { source: c, alt: d = "", responsiveVisibility: e, className: f, ...g } = a,
-      { classNames: h } = bf({ className: f, responsiveVisibility: e });
-    return aR.jsx("img", { ref: b, src: c, className: h, ...g, alt: d });
+      { classNames: h } = be({ className: f, responsiveVisibility: e });
+    return aP.jsx("img", { ref: b, src: c, className: h, ...g, alt: d });
   });
 (exports.TextTypeEnum = void 0),
   (function (a) {
@@ -242,63 +243,63 @@ const I = a.default.forwardRef((a, b) => {
       (a.Cite = "Cite");
   })(exports.TextTypeEnum || (exports.TextTypeEnum = {}));
 const R = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("div", { ...b, ref: c, children: a })
+    aP.jsx("div", { ...b, ref: c, children: a })
   ),
   S = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("a", { ...b, ref: c, children: a })
+    aP.jsx("a", { ...b, ref: c, children: a })
   ),
   T = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("h1", { ...b, ref: c, children: a })
+    aP.jsx("h1", { ...b, ref: c, children: a })
   ),
   U = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("h2", { ...b, ref: c, children: a })
+    aP.jsx("h2", { ...b, ref: c, children: a })
   ),
   V = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("h3", { ...b, ref: c, children: a })
+    aP.jsx("h3", { ...b, ref: c, children: a })
   ),
   W = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("h4", { ...b, ref: c, children: a })
+    aP.jsx("h4", { ...b, ref: c, children: a })
   ),
   X = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("h5", { ...b, ref: c, children: a })
+    aP.jsx("h5", { ...b, ref: c, children: a })
   ),
   Y = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("h6", { ...b, ref: c, children: a })
+    aP.jsx("h6", { ...b, ref: c, children: a })
   ),
   Z = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("b", { ...b, ref: c, children: a })
+    aP.jsx("b", { ...b, ref: c, children: a })
   ),
   $ = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("i", { ...b, ref: c, children: a })
+    aP.jsx("i", { ...b, ref: c, children: a })
   ),
   _ = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("em", { ...b, ref: c, children: a })
+    aP.jsx("em", { ...b, ref: c, children: a })
   ),
   aa = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("u", { ...b, ref: c, children: a })
+    aP.jsx("u", { ...b, ref: c, children: a })
   ),
   ab = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("s", { ...b, ref: c, children: a })
+    aP.jsx("s", { ...b, ref: c, children: a })
   ),
   ac = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("del", { ...b, ref: c, children: a })
+    aP.jsx("del", { ...b, ref: c, children: a })
   ),
   ad = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("pre", { ...b, ref: c, children: a })
+    aP.jsx("pre", { ...b, ref: c, children: a })
   ),
   ae = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("code", { ...b, ref: c, children: a })
+    aP.jsx("code", { ...b, ref: c, children: a })
   ),
   af = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("blockquote", { ...b, ref: c, children: a })
+    aP.jsx("blockquote", { ...b, ref: c, children: a })
   ),
   ag = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("figcaption", { ...b, ref: c, children: a })
+    aP.jsx("figcaption", { ...b, ref: c, children: a })
   ),
   ah = a.default.forwardRef(({ children: a, ...b }, c) =>
-    aR.jsx("cite", { ...b, ref: c, children: a })
+    aP.jsx("cite", { ...b, ref: c, children: a })
   ),
-  bh = {
+  bg = {
     [exports.TextTypeEnum.Text]: R,
     [exports.TextTypeEnum.Link]: S,
     [exports.TextTypeEnum.H1]: T,
@@ -326,15 +327,15 @@ const R = a.default.forwardRef(({ children: a, ...b }, c) =>
         className: e,
         ...f
       } = a,
-      g = bh[c],
-      { classNames: h } = bf({ className: e, responsiveVisibility: d });
-    return aR.jsx(g, { ...f, className: h, ref: b });
+      g = bg[c],
+      { classNames: h } = be({ className: e, responsiveVisibility: d });
+    return aP.jsx(g, { ...f, className: h, ref: b });
   }),
-  bi = (a) => "object" == typeof a,
-  bj = (...a) => a.filter((a) => !bi(a)).join(" "),
-  bk = "mccb30e4f2_input";
-var bl = { input: "mccb30e4f2_input" };
-const aj = a.default.forwardRef((c, e) => {
+  bh = (a) => "object" == typeof a,
+  bi = (...a) => a.filter((a) => !bh(a)).join(" "),
+  bj = "mccb30e4f2_input";
+var bk = { input: "mccb30e4f2_input" };
+const aj = a.default.forwardRef((c, d) => {
     let {
         style: f = {},
         inputStyle: h = {},
@@ -347,32 +348,32 @@ const aj = a.default.forwardRef((c, e) => {
         suffixIconProps: m,
         ...n
       } = c,
-      o = g.useMemo(() => (i ? d.Input.Password : d.Input), [i]),
+      o = g.useMemo(() => (i ? e.Input.Password : e.Input), [i]),
       p = g.useMemo(
-        () => (bi(h) ? { style: h, className: bl.input } : { className: bj(bl.input, h) }),
+        () => (bh(h) ? { style: h, className: bk.input } : { className: bi(bk.input, h) }),
         [h]
       ),
       q = g.useMemo(() => {
-        if (l) return aR.jsx(I, { ...l });
+        if (l) return aP.jsx(I, { ...l });
       }, [l]),
       r = g.useMemo(() => {
-        if (m) return aR.jsx(I, { ...m });
+        if (m) return aP.jsx(I, { ...m });
       }, [m]),
-      { classNames: s } = bf({ className: b, responsiveVisibility: j });
-    return aR.jsxs("div", {
+      { classNames: s } = be({ className: b, responsiveVisibility: j });
+    return aP.jsxs("div", {
       style: f,
-      className: a2.default(bj(bl.container, b || ""), s),
-      ref: e,
+      className: a1.default(bi(bk.container, b || ""), s),
+      ref: d,
       children: [
-        aR.jsx(o, { ...p, disabled: k, prefix: q, suffix: r, ...n }),
-        !!a && aR.jsx(ai, { type: "danger", children: a }),
+        aP.jsx(o, { ...p, disabled: k, prefix: q, suffix: r, ...n }),
+        !!a && aP.jsx(ai, { type: "danger", children: a }),
       ],
     });
   }),
   ak = a.default.forwardRef((a, b) => {
     let { children: c, responsiveVisibility: d, className: e, ...f } = a,
-      { classNames: g } = bf({ className: e, responsiveVisibility: d });
-    return aR.jsx(a8.default, {
+      { classNames: g } = be({ className: e, responsiveVisibility: d });
+    return aP.jsx(a7.default, {
       ...f,
       prefixCls: "jitera-layout",
       className: g,
@@ -380,44 +381,44 @@ const aj = a.default.forwardRef((c, e) => {
       children: c,
     });
   }),
-  bm = b.default.div`
+  bl = b.default.div`
   .jitera-menu-item-disabled,
   .jitera-menu-submenu-disabled {
     ${(a) => (a.isPreview ? "color: unset !important; cursor: unset;" : "")}
   }
 `,
-  bn = b.default.div`
+  bm = b.default.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `,
-  bo = b.default.div`
+  bn = b.default.div`
   width: 100%;
 `,
-  bp = b.default.div`
+  bo = b.default.div`
   display: flex;
 `,
-  bq = b.default.div`
+  bp = b.default.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   line-height: 1;
 `,
   al = a.default.forwardRef((b, c) => {
-    let { isPreview: a, className: e, responsiveVisibility: f, ...g } = b,
-      { classNames: h } = bf({ className: e, responsiveVisibility: f });
-    return aR.jsx(bm, {
+    let { isPreview: a, className: d, responsiveVisibility: f, ...g } = b,
+      { classNames: h } = be({ className: d, responsiveVisibility: f });
+    return aP.jsx(bl, {
       isPreview: a,
       className: h,
       ref: c,
-      children: aR.jsx(d.Menu, { disabled: a, ...g, prefixCls: "jitera-menu" }),
+      children: aP.jsx(e.Menu, { disabled: a, ...g, prefixCls: "jitera-menu" }),
     });
   });
 (exports.MenuIconPosition = void 0),
   (function (a) {
     (a.Left = "left"), (a.Right = "right"), (a.Top = "top"), (a.Bottom = "bottom");
   })(exports.MenuIconPosition || (exports.MenuIconPosition = {}));
-const { Item: br } = d.Menu,
+const { Item: bq } = e.Menu,
   am = a.default.forwardRef(
     (
       {
@@ -431,34 +432,34 @@ const { Item: br } = d.Menu,
       },
       h
     ) => {
-      let { classNames: i } = bf({ className: f, responsiveVisibility: e });
-      return aR.jsx(bn, {
+      let { classNames: i } = be({ className: f, responsiveVisibility: e });
+      return aP.jsx(bm, {
         className: i,
         ref: h,
-        children: aR.jsx(bo, {
-          children: aR.jsx(br, { ...g, children: b && c && d ? bs(b, c, d, a) : a }),
+        children: aP.jsx(bn, {
+          children: aP.jsx(bq, { ...g, children: b && c && d ? br(b, c, d, a) : a }),
         }),
       });
     }
   );
-function bs(a, d, b, c) {
+function br(a, d, b, c) {
   switch (d) {
     case exports.MenuIconPosition.Left:
-      return aR.jsxs(bp, { style: { gap: b }, children: [aR.jsx(I, { ...a }), c] });
+      return aP.jsxs(bo, { style: { gap: b }, children: [aP.jsx(I, { ...a }), c] });
     case exports.MenuIconPosition.Right:
-      return aR.jsxs(bp, { style: { gap: b }, children: [c, aR.jsx(I, { ...a })] });
+      return aP.jsxs(bo, { style: { gap: b }, children: [c, aP.jsx(I, { ...a })] });
     case exports.MenuIconPosition.Top:
-      return aR.jsxs(bq, { style: { gap: b }, children: [aR.jsx(I, { ...a }), c] });
+      return aP.jsxs(bp, { style: { gap: b }, children: [aP.jsx(I, { ...a }), c] });
     case exports.MenuIconPosition.Bottom:
-      return aR.jsxs(bq, { style: { gap: b }, children: [c, aR.jsx(I, { ...a })] });
+      return aP.jsxs(bp, { style: { gap: b }, children: [c, aP.jsx(I, { ...a })] });
     default:
       return G(d);
   }
 }
 const an = a.default.forwardRef((a, b) =>
-    aR.jsx("ul", { ref: b, children: aR.jsx(a9.default, { ...a }) })
+    aP.jsx("ul", { ref: b, children: aP.jsx(a8.default, { ...a }) })
   ),
-  bt = b.default.div`
+  bs = b.default.div`
   width: 100%;
   ${(a) => `min-height: ${a.minHeight};`}
   background-color: #fff;
@@ -467,9 +468,9 @@ const an = a.default.forwardRef((a, b) =>
   ao = a.default.forwardRef(({ ...b }, c) => {
     let { children: d, isPreview: a, responsiveVisibility: e, className: f, ...g } = b,
       h = a ? "100%" : "100vh",
-      { classNames: i } = bf({ className: f, responsiveVisibility: e });
-    return aR.jsx(bt, {
-      className: a2.default(a ? "preview-page" : void 0, i),
+      { classNames: i } = be({ className: f, responsiveVisibility: e });
+    return aP.jsx(bs, {
+      className: a1.default(a ? "preview-page" : void 0, i),
       minHeight: h,
       isPreview: a,
       ...g,
@@ -478,14 +479,14 @@ const an = a.default.forwardRef((a, b) =>
     });
   }),
   ap = a.default.forwardRef((a, b) => {
-    let { children: c, responsiveVisibility: e, className: f, ...g } = a,
-      { classNames: h } = bf({ className: f, responsiveVisibility: e });
-    return aR.jsx(d.Row, { ...g, className: h, ref: b, children: c });
+    let { children: c, responsiveVisibility: d, className: f, ...g } = a,
+      { classNames: h } = be({ className: f, responsiveVisibility: d });
+    return aP.jsx(e.Row, { ...g, className: h, ref: b, children: c });
   }),
   aq = a.default.forwardRef((a, b) => {
     let { children: c, responsiveVisibility: d, className: e, ...f } = a,
-      { classNames: g } = bf({ className: e, responsiveVisibility: d });
-    return aR.jsx(ba.default, {
+      { classNames: g } = be({ className: e, responsiveVisibility: d });
+    return aP.jsx(a9.default, {
       ...f,
       className: g,
       prefixCls: "jitera-layout-sider",
@@ -521,11 +522,11 @@ const an = a.default.forwardRef((a, b) =>
         if (n)
           return {
             DropdownIndicator: (a) =>
-              aR.jsx(w.components.DropdownIndicator, { ...a, children: aR.jsx(I, { ...n }) }),
+              aP.jsx(w.components.DropdownIndicator, { ...a, children: aP.jsx(I, { ...n }) }),
           };
       }, [n]),
-      { classNames: q } = bf({ className: f, responsiveVisibility: e });
-    return aR.jsx(bb.default, {
+      { classNames: q } = be({ className: f, responsiveVisibility: e });
+    return aP.jsx(ba.default, {
       className: q,
       components: p,
       menuIsOpen: !d && (null == a ? void 0 : a.menuIsOpen),
@@ -535,22 +536,22 @@ const an = a.default.forwardRef((a, b) =>
       ref: c,
     });
   }),
-  bu = "mc6f30f899_inner";
-var bv = { inner: "mc6f30f899_inner" };
+  bt = "mc6f30f899_inner";
+var bu = { inner: "mc6f30f899_inner" };
 const as = a.default.forwardRef((a, b) => {
-  let { style: c, responsiveVisibility: e, className: f, ...g } = a,
-    { classNames: h } = bf({ className: f, responsiveVisibility: e });
-  return aR.jsx("div", {
+  let { style: c, responsiveVisibility: d, className: f, ...g } = a,
+    { classNames: h } = be({ className: f, responsiveVisibility: d });
+  return aP.jsx("div", {
     style: c,
     className: h,
     ref: b,
-    children: aR.jsx(d.List, { className: bv.inner, ...g }),
+    children: aP.jsx(e.List, { className: bu.inner, ...g }),
   });
 });
-function bw(a) {
+function bv(a) {
   return ("string" == typeof a && ["wrap", "wrap-reverse"].includes(a)) || !0 === a;
 }
-const bx = b.default.div`
+const bw = b.default.div`
   .jitera-radio-inner {
     border-color: ${(a) => a.inactiveColor || a.theme.primaryColor};
   }
@@ -575,7 +576,7 @@ const bx = b.default.div`
   at = a.default.forwardRef((b, c) => {
     let {
         data: a,
-        spaceProps: e,
+        spaceProps: d,
         isPreview: f,
         responsiveVisibility: h,
         className: i,
@@ -587,33 +588,33 @@ const bx = b.default.div`
         wrap: o = "wrap",
         ...p
       } = b,
-      q = g.useMemo(() => ({ ...e, wrap: bw(o) }), [o, e]),
-      r = g.useMemo(() => (bi(n) ? { style: n } : { className: bj(n) }), [n]),
-      { classNames: s } = bf({ className: i, responsiveVisibility: h });
-    return aR.jsx(bx, {
+      q = g.useMemo(() => ({ ...d, wrap: bv(o) }), [o, d]),
+      r = g.useMemo(() => (bh(n) ? { style: n } : { className: bi(n) }), [n]),
+      { classNames: s } = be({ className: i, responsiveVisibility: h });
+    return aP.jsx(bw, {
       className: s,
       activeColor: j,
       inactiveColor: k,
       labelStyle: l,
       ...r,
-      children: aR.jsx(d.Radio.Group, {
+      children: aP.jsx(e.Radio.Group, {
         disabled: f,
         ...p,
         ref: c,
-        children: aR.jsx(d.Space, {
+        children: aP.jsx(e.Space, {
           direction: m,
           ...q,
           children:
             null == a
               ? void 0
-              : a.map((a) => aR.jsx(d.Radio, { value: a.value, ...a, children: a.label }, a.value)),
+              : a.map((a) => aP.jsx(e.Radio, { value: a.value, ...a, children: a.label }, a.value)),
         }),
       }),
     });
   }),
-  by = "mc68e5c85d_textarea";
-var bz = { textarea: "mc68e5c85d_textarea" };
-const au = a.default.forwardRef((c, e) => {
+  bx = "mc68e5c85d_textarea";
+var by = { textarea: "mc68e5c85d_textarea" };
+const au = a.default.forwardRef((c, d) => {
     let {
         style: f = {},
         inputStyle: h = {},
@@ -624,21 +625,21 @@ const au = a.default.forwardRef((c, e) => {
         ...k
       } = c,
       l = g.useMemo(
-        () => (bi(h) ? { style: h, className: bz.textarea } : { className: bj(bz.textarea, h) }),
+        () => (bh(h) ? { style: h, className: by.textarea } : { className: bi(by.textarea, h) }),
         [h]
       ),
-      { classNames: m } = bf({ className: b, responsiveVisibility: i });
-    return aR.jsxs("div", {
+      { classNames: m } = be({ className: b, responsiveVisibility: i });
+    return aP.jsxs("div", {
       style: f,
-      className: a2.default(bj(bz.container, b || ""), m),
-      ref: e,
+      className: a1.default(bi(by.container, b || ""), m),
+      ref: d,
       children: [
-        aR.jsx(d.Input.TextArea, { ...l, disabled: j, ...k }),
-        !!a && aR.jsx(ai, { type: "danger", children: a }),
+        aP.jsx(e.Input.TextArea, { ...l, disabled: j, ...k }),
+        !!a && aP.jsx(ai, { type: "danger", children: a }),
       ],
     });
   }),
-  bA = b.default.div`
+  bz = b.default.div`
   && {
     .jitera-checkbox-inner {
       border-color: ${(a) => a.inactiveColor || a.theme.primaryColor};
@@ -667,7 +668,7 @@ const au = a.default.forwardRef((c, e) => {
   av = a.default.forwardRef((b, c) => {
     let {
         data: a,
-        wrap: e = "wrap",
+        wrap: d = "wrap",
         spaceProps: f,
         isPreview: h,
         responsiveVisibility: i,
@@ -680,45 +681,45 @@ const au = a.default.forwardRef((c, e) => {
         className: p,
         ...q
       } = b,
-      r = g.useMemo(() => ({ ...f, wrap: bw(e) }), [e, f]),
-      s = g.useMemo(() => (bi(j) ? { style: j } : { className: bj(j) }), [j]),
-      { classNames: t } = bf({ className: p, responsiveVisibility: i });
-    return aR.jsx(bA, {
+      r = g.useMemo(() => ({ ...f, wrap: bv(d) }), [d, f]),
+      s = g.useMemo(() => (bh(j) ? { style: j } : { className: bi(j) }), [j]),
+      { classNames: t } = be({ className: p, responsiveVisibility: i });
+    return aP.jsx(bz, {
       activeColor: k,
       inactiveColor: l,
       checkColor: m,
       labelStyle: n,
       ...s,
       className: t,
-      children: aR.jsx(d.Checkbox.Group, {
+      children: aP.jsx(e.Checkbox.Group, {
         disabled: h,
         ...q,
         ref: c,
-        children: aR.jsx(d.Space, {
+        children: aP.jsx(e.Space, {
           direction: o,
           ...r,
           children:
-            null == a ? void 0 : a.map((a) => aR.jsx(d.Checkbox, { ...a, children: a.label })),
+            null == a ? void 0 : a.map((a) => aP.jsx(e.Checkbox, { ...a, children: a.label })),
         }),
       }),
     });
   }),
   aw = a.default.forwardRef((b, c) => {
     let {
-        children: e,
+        children: d,
         isPreview: f,
         responsiveVisibility: g,
         errorMessage: a,
         className: h,
         ...i
       } = b,
-      { classNames: j } = bf({ className: h, responsiveVisibility: g });
-    return aR.jsxs("div", {
+      { classNames: j } = be({ className: h, responsiveVisibility: g });
+    return aP.jsxs("div", {
       className: j,
       ref: c,
       children: [
-        aR.jsx(d.Upload, { disabled: f, listType: "picture", ...i, children: e }),
-        !!a && aR.jsx(ai, { type: "danger", children: a }),
+        aP.jsx(e.Upload, { disabled: f, listType: "picture", ...i, children: d }),
+        !!a && aP.jsx(ai, { type: "danger", children: a }),
       ],
     });
   });
@@ -728,7 +729,7 @@ const au = a.default.forwardRef((c, e) => {
   })(exports.PickerEnum || (exports.PickerEnum = {}));
 const ax = a.default.forwardRef((b, c) => {
     let {
-        isPreview: e,
+        isPreview: d,
         defaultValue: f,
         responsiveVisibility: h,
         picker: i = "date",
@@ -737,27 +738,27 @@ const ax = a.default.forwardRef((b, c) => {
         value: k,
         ...l
       } = b,
-      { classNames: m } = bf({ className: j, responsiveVisibility: h }),
-      n = g.useMemo(() => ("string" == typeof f ? bc.default(f) : f), [f]),
-      o = g.useMemo(() => (k ? ("string" == typeof k ? bc.default(k) : k) : void 0), [k]);
-    return aR.jsxs("div", {
+      { classNames: m } = be({ className: j, responsiveVisibility: h }),
+      n = g.useMemo(() => ("string" == typeof f ? bb.default(f) : f), [f]),
+      o = g.useMemo(() => (k ? ("string" == typeof k ? bb.default(k) : k) : void 0), [k]);
+    return aP.jsxs("div", {
       className: m,
       ref: c,
       children: [
-        aR.jsx(d.DatePicker, {
-          disabled: e,
+        aP.jsx(e.DatePicker, {
+          disabled: d,
           picker: i,
           defaultValue: n,
           prefixCls: "jitera-picker",
           value: o,
           ...l,
         }),
-        !!a && aR.jsx(ai, { type: "danger", style: { display: "block" }, children: a }),
+        !!a && aP.jsx(ai, { type: "danger", style: { display: "block" }, children: a }),
       ],
     });
   }),
-  bB = "mca48d82cd_Wrapper";
-var bC = { Wrapper: "mca48d82cd_Wrapper" };
+  bA = "mca48d82cd_Wrapper";
+var bB = { Wrapper: "mca48d82cd_Wrapper" };
 (exports.HamburgerDrawerPlacementEnum = void 0),
   (function (a) {
     (a.TOP = "top"), (a.RIGHT = "right"), (a.BOTTOM = "bottom"), (a.LEFT = "left");
@@ -765,7 +766,7 @@ var bC = { Wrapper: "mca48d82cd_Wrapper" };
 const ay = a.default.forwardRef((a, b) => {
     let {
         isPreview: c,
-        responsiveVisibility: e,
+        responsiveVisibility: d,
         buttonProps: f,
         buttonStyle: h,
         drawerTitle: i,
@@ -796,18 +797,18 @@ const ay = a.default.forwardRef((a, b) => {
           }
         : {},
       w = q ? { title: i, closable: r } : { title: void 0, closable: !1 },
-      { classNames: x } = bf({ className: o, responsiveVisibility: e });
-    return aR.jsxs("div", {
-      className: a2.default(bC.Wrapper, x),
+      { classNames: x } = be({ className: o, responsiveVisibility: d });
+    return aP.jsxs("div", {
+      className: a1.default(bB.Wrapper, x),
       ref: b,
       children: [
-        aR.jsx(J, {
+        aP.jsx(J, {
           onClick: t,
           style: h,
           ...f,
-          children: aR.jsx(I, { iconName: "MdMenu", ...m }),
+          children: aP.jsx(I, { iconName: "MdMenu", ...m }),
         }),
-        aR.jsx(d.Drawer, {
+        aP.jsx(e.Drawer, {
           ...v,
           ...w,
           visible: p,
@@ -822,10 +823,10 @@ const ay = a.default.forwardRef((a, b) => {
   }),
   az = a.default.forwardRef((a, b) => {
     let { children: c, responsiveVisibility: d, className: e, ...f } = a,
-      { classNames: g } = bf({ className: e, responsiveVisibility: d });
-    return aR.jsx("div", { ...f, className: g, ref: b, children: c });
+      { classNames: g } = be({ className: e, responsiveVisibility: d });
+    return aP.jsx("div", { ...f, className: g, ref: b, children: c });
   }),
-  bD = { MOBILE: 480, TABLET: 768, DESKTOP: 4e3 },
+  bC = { MOBILE: 480, TABLET: 768, DESKTOP: 4e3 },
   aA = a.default.forwardRef((b, c) => {
     let {
         style: d,
@@ -845,19 +846,19 @@ const ay = a.default.forwardRef((a, b) => {
         xsResponsive: r,
         className: s,
       } = b,
-      { classNames: t } = bf({ className: s, responsiveVisibility: f }),
+      { classNames: t } = be({ className: s, responsiveVisibility: f }),
       u = g.useMemo(() => {
         let b = [];
         return (
           "object" == typeof p &&
             (null == p ? void 0 : p.slidesToShow) &&
-            b.push({ breakpoint: bD.DESKTOP, settings: p }),
+            b.push({ breakpoint: bC.DESKTOP, settings: p }),
           "object" == typeof q &&
             (null == q ? void 0 : q.slidesToShow) &&
-            b.push({ breakpoint: bD.TABLET, settings: q }),
+            b.push({ breakpoint: bC.TABLET, settings: q }),
           "object" == typeof r &&
             (null == r ? void 0 : r.slidesToShow) &&
-            b.push({ breakpoint: bD.MOBILE, settings: r }),
+            b.push({ breakpoint: bC.MOBILE, settings: r }),
           {
             dots: !1,
             arrows: k,
@@ -877,20 +878,20 @@ const ay = a.default.forwardRef((a, b) => {
           e && a
             ? e
             : e
-            ? g.Children.map(e, (a) => aR.jsx("div", { children: a }))
+            ? g.Children.map(e, (a) => aP.jsx("div", { children: a }))
             : (null == h ? void 0 : h.length) && i
-            ? h.map((b, c) => (a ? i(b, c) : aR.jsx("div", { children: i(b, c) }, `${b.id}_${c}`)))
+            ? h.map((b, c) => (a ? i(b, c) : aP.jsx("div", { children: i(b, c) }, `${b.id}_${c}`)))
             : void 0,
         [e, a, h, i]
       );
-    return aR.jsx("div", {
+    return aP.jsx("div", {
       style: d,
       className: t,
       ref: c,
-      children: aR.jsx(bd.default, { ...u, children: v }),
+      children: aP.jsx(bc.default, { ...u, children: v }),
     });
   }),
-  bE = b.default(d.Tabs)`
+  bD = b.default(e.Tabs)`
   .jitera-tabs-ink-bar {
     ${(a) => ((null == a ? void 0 : a.activeColor) ? `background-color: ${a.activeColor}` : "")}
   }
@@ -932,7 +933,7 @@ const ay = a.default.forwardRef((a, b) => {
     }}
   }
 `,
-  { TabPane: bF } = d.Tabs,
+  { TabPane: bE } = e.Tabs,
   aB = a.default.forwardRef((a, b) => {
     let {
         style: c,
@@ -943,45 +944,45 @@ const ay = a.default.forwardRef((a, b) => {
         responsiveVisibility: i,
         ...j
       } = a,
-      { classNames: k } = bf({ className: h, responsiveVisibility: i }),
+      { classNames: k } = be({ className: h, responsiveVisibility: i }),
       l = g.useMemo(() => {
         if (f)
           return g.Children.map(f, (d, a) => {
             let b = (null == e ? void 0 : e[a]) || (null == e ? void 0 : e[`${a}`]),
               c = (null == b ? void 0 : b.title) || `Tab ${a}`;
-            return aR.jsx(bF, { tab: c, children: d }, (null == b ? void 0 : b.key) || `${c}_${a}`);
+            return aP.jsx(bE, { tab: c, children: d }, (null == b ? void 0 : b.key) || `${c}_${a}`);
           });
       }, [f, e]);
-    return aR.jsx("div", {
+    return aP.jsx("div", {
       style: c,
       className: k,
       ref: b,
-      children: aR.jsx(bE, { type: d, ...j, children: l }),
+      children: aP.jsx(bD, { type: d, ...j, children: l }),
     });
   }),
-  bG = new Set();
-function bH(a) {
-  if (!bG.has(a))
+  bF = new Set();
+function bG(a) {
+  if (!bF.has(a))
     throw new Promise((c) => {
       let b = new Image();
       (b.src = a),
         b.addEventListener("load", () => {
-          bG.add(a), c(null);
+          bF.add(a), c(null);
         });
     });
 }
-function bI(a) {
+function bH(a) {
   if (a instanceof HTMLImageElement) {
     let { alt: b, src: c } = a,
-      d = bL({ altText: b, src: c });
+      d = bK({ altText: b, src: c });
     return { node: d };
   }
   return null;
 }
-function bJ({ altText: b, className: c, imageRef: d, src: a, width: e, height: f, maxWidth: g }) {
+function bI({ altText: b, className: c, imageRef: d, src: a, width: e, height: f, maxWidth: g }) {
   return (
-    bH(a),
-    aR.jsx("img", {
+    bG(a),
+    aP.jsx("img", {
       className: c || void 0,
       src: a,
       alt: b,
@@ -991,10 +992,10 @@ function bJ({ altText: b, className: c, imageRef: d, src: a, width: e, height: f
     })
   );
 }
-function bK({ src: e, altText: f, nodeKey: b, width: h, height: i, maxWidth: j }) {
+function bJ({ src: e, altText: f, nodeKey: b, width: h, height: i, maxWidth: j }) {
   let k = g.useRef(null),
-    [a, c, l] = aU.useLexicalNodeSelection(b),
-    [m] = aT.useLexicalComposerContext(),
+    [a, c, l] = aS.useLexicalNodeSelection(b),
+    [m] = aR.useLexicalComposerContext(),
     [d, q] = g.useState(null),
     n = g.useCallback(
       (e) => {
@@ -1002,7 +1003,7 @@ function bK({ src: e, altText: f, nodeKey: b, width: h, height: i, maxWidth: j }
           let f = e;
           f.preventDefault();
           let d = C.$getNodeByKey(b);
-          bM(d) && d.remove(), c(!1);
+          bL(d) && d.remove(), c(!1);
         }
         return !1;
       },
@@ -1010,7 +1011,7 @@ function bK({ src: e, altText: f, nodeKey: b, width: h, height: i, maxWidth: j }
     );
   g.useEffect(
     () =>
-      aV.mergeRegister(
+      aT.mergeRegister(
         m.registerUpdateListener(({ editorState: a }) => {
           q(a.read(() => C.$getSelection()));
         }),
@@ -1029,11 +1030,11 @@ function bK({ src: e, altText: f, nodeKey: b, width: h, height: i, maxWidth: j }
   );
   let o = a && C.$isNodeSelection(d),
     p = C.$isNodeSelection(d) && a;
-  return aR.jsx(g.Suspense, {
+  return aP.jsx(g.Suspense, {
     fallback: null,
-    children: aR.jsx("div", {
+    children: aP.jsx("div", {
       draggable: o,
-      children: aR.jsx(bJ, {
+      children: aP.jsx(bI, {
         className: p ? "focused" : null,
         src: e,
         altText: f,
@@ -1073,7 +1074,7 @@ class aC extends C.DecoratorNode {
   }
   static importJSON(d) {
     let { altText: e, height: f, width: g, maxWidth: h, caption: i, src: j, showCaption: k } = d,
-      a = bL({ altText: e, height: f, maxWidth: h, showCaption: k, src: j, width: g }),
+      a = bK({ altText: e, height: f, maxWidth: h, showCaption: k, src: j, width: g }),
       b = a.__caption,
       c = b.parseEditorState(i.editorState);
     return c.isEmpty() || b.setEditorState(c), a;
@@ -1083,7 +1084,7 @@ class aC extends C.DecoratorNode {
     return a.setAttribute("src", this.__src), a.setAttribute("alt", this.__altText), { element: a };
   }
   static importDOM() {
-    return { img: () => ({ conversion: bI, priority: 0 }) };
+    return { img: () => ({ conversion: bH, priority: 0 }) };
   }
   exportJSON() {
     return {
@@ -1122,7 +1123,7 @@ class aC extends C.DecoratorNode {
     return this.__altText;
   }
   decorate() {
-    return aR.jsx(bK, {
+    return aP.jsx(bJ, {
       src: this.__src,
       altText: this.__altText,
       width: this.__width,
@@ -1132,7 +1133,7 @@ class aC extends C.DecoratorNode {
     });
   }
 }
-function bL({
+function bK({
   altText: a,
   height: b,
   maxWidth: c = 500,
@@ -1144,7 +1145,7 @@ function bL({
 }) {
   return new aC(d, a, c, e, b, f, g, h);
 }
-function bM(a) {
+function bL(a) {
   return a instanceof aC;
 }
 const aD = [
@@ -1164,7 +1165,7 @@ const aD = [
   B.HorizontalRuleNode,
   z.MarkNode,
 ];
-var bN = aD;
+var bM = aD;
 const aE = {
   characterLimit: "JiteraRichText__characterLimit",
   code: "JiteraRichText__code",
@@ -1246,11 +1247,11 @@ const aE = {
     underlineStrikethrough: "JiteraRichText__textUnderlineStrikethrough",
   },
 };
-var bO = aE;
-const bP =
+var bN = aE;
+const bO =
     '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}',
-  bQ = ({ data: a }) => {
-    let [c] = aT.useLexicalComposerContext(),
+  bP = ({ data: a }) => {
+    let [c] = aR.useLexicalComposerContext(),
       b = g.useMemo(
         () =>
           a ||
@@ -1269,9 +1270,9 @@ const bP =
           c.setReadOnly(!0);
         });
       }, []),
-      aR.jsx(aW.RichTextPlugin, {
-        contentEditable: aR.jsx(aX.ContentEditable, {}),
-        placeholder: aR.jsx("div", {}),
+      aP.jsx(aU.RichTextPlugin, {
+        contentEditable: aP.jsx(aV.ContentEditable, {}),
+        placeholder: aP.jsx("div", {}),
         initialEditorState: void 0,
       })
     );
@@ -1280,25 +1281,25 @@ const bP =
     let d = {
       editorState: void 0,
       namespace: "Playground",
-      nodes: [...bN],
+      nodes: [...bM],
       onError(a) {
         throw a;
       },
-      theme: bO,
+      theme: bN,
     };
-    return aR.jsx("div", {
+    return aP.jsx("div", {
       ref: c,
       style: a,
-      children: aR.jsx(aS.LexicalComposer, { initialConfig: d, children: aR.jsx(bQ, { data: b }) }),
+      children: aP.jsx(aQ.LexicalComposer, { initialConfig: d, children: aP.jsx(bP, { data: b }) }),
     });
   }),
-  bR = b.default.div`
+  bQ = b.default.div`
   && {
     width: fit-content;
     ${(a) => a.customStyle}
   }
 `,
-  bS = b.default.div`
+  bR = b.default.div`
   position: absolute;
   right: 0;
   top: 0;
@@ -1310,21 +1311,21 @@ const bP =
   user-select: none;
   touch-action: none;
 `,
-  bT = b.default.table`
+  bS = b.default.table`
   border-collapse: collapse;
   width: fit-content;
   ${(a) => a.customStyle}
 `,
-  bU = b.default.thead`
+  bT = b.default.thead`
   ${(a) => a.customStyle}
 `,
-  bV = b.default.tbody`
+  bU = b.default.tbody`
   ${(a) => a.customStyle}
 `,
-  bW = b.default.tfoot`
+  bV = b.default.tfoot`
   ${(a) => a.customStyle}
 `,
-  bX = b.default.tr`
+  bW = b.default.tr`
   width: fit-content;
   ${(a) => a.customStyle}
 
@@ -1336,7 +1337,7 @@ const bP =
     cursor: row-resize;
   }
 `,
-  bY = b.default.th`
+  bX = b.default.th`
   cursor: ${(a) => (a.canSort ? "pointer" : null)};
   position: relative;
   ${(a) => a.customStyle}
@@ -1353,17 +1354,17 @@ const bP =
     opacity: 1;
   }
 `,
-  bZ = b.default.td`
+  bY = b.default.td`
   ${(a) => (a.isSortColumn ? { textAlign: "center" } : void 0)}
   ${(a) => a.customStyle}
 `,
-  b$ = b.default.div`
+  bZ = b.default.div`
   display: flex;
   justify-content: ${(a) => a.paginationPosition};
   ${(a) => a.customStyle}
 `,
   aG = { borderWidth: "1px", borderColor: "#000", borderStyle: "solid" },
-  b_ = ({
+  b$ = ({
     header: a,
     isColumnResizeable: b,
     isColumnSortable: l,
@@ -1379,9 +1380,9 @@ const bP =
         transform: c,
         isDragging: o,
         setNodeRef: p,
-      } = aZ.useSortable({ id: a.id }),
+      } = aX.useSortable({ id: a.id }),
       q = {
-        transform: a0.CSS.Transform.toString({
+        transform: a$.CSS.Transform.toString({
           x: (null == c ? void 0 : c.x) || 0,
           y: (null == c ? void 0 : c.y) || 0,
           scaleX: 1,
@@ -1394,8 +1395,8 @@ const bP =
       }, [null === (f = a.column.columnDef.meta) || void 0 === f ? void 0 : f.action, l]),
       r = i ? n : void 0,
       s = i ? m : void 0;
-    return aR.jsxs(
-      bY,
+    return aP.jsxs(
+      bX,
       {
         ref: p,
         className: `j-table__thead-th j-table__thead-th--${a.id} ${
@@ -1410,9 +1411,9 @@ const bP =
         ...r,
         ...s,
         children: [
-          aY.flexRender(a.column.columnDef.header, a.getContext()),
+          aW.flexRender(a.column.columnDef.header, a.getContext()),
           i
-            ? aR.jsx(I, {
+            ? aP.jsx(I, {
                 className: "j-table__thead-th-drag-indicator",
                 iconName: "MdDragIndicator",
               })
@@ -1420,14 +1421,14 @@ const bP =
           d
             ? null !==
                 (h = {
-                  asc: j ? aR.jsx(I, { ...j }) : " \u{1F53C}",
-                  desc: k ? aR.jsx(I, { ...k }) : " \u{1F53D}",
+                  asc: j ? aP.jsx(I, { ...j }) : " \u{1F53C}",
+                  desc: k ? aP.jsx(I, { ...k }) : " \u{1F53D}",
                 }[a.column.getIsSorted()]) && void 0 !== h
               ? h
               : null
             : void 0,
           b
-            ? aR.jsx(bS, {
+            ? aP.jsx(bR, {
                 className: "j-table__resizer",
                 isResizing: a.column.getIsResizing(),
                 onMouseDown: a.getResizeHandler(),
@@ -1439,7 +1440,7 @@ const bP =
       a.id
     );
   },
-  b0 = ({
+  b_ = ({
     row: a,
     isRowSortable: c,
     isColumnResizeable: l,
@@ -1453,17 +1454,17 @@ const bP =
         transform: b,
         isDragging: i,
         setNodeRef: j,
-      } = aZ.useSortable({ id: a.id }),
+      } = aX.useSortable({ id: a.id }),
       k = {
-        transform: a0.CSS.Transform.toString({
+        transform: a$.CSS.Transform.toString({
           x: (null == b ? void 0 : b.x) || 0,
           y: (null == b ? void 0 : b.y) || 0,
           scaleX: 1,
           scaleY: 1,
         }),
       };
-    return aR.jsxs(
-      bX,
+    return aP.jsxs(
+      bW,
       {
         ref: j,
         className: `j-table__tbody-tr j-table__tbody-tr--${a.id} ${
@@ -1472,27 +1473,27 @@ const bP =
         customStyle: { ...d, ...k },
         children: [
           c
-            ? aR.jsx(bZ, {
+            ? aP.jsx(bY, {
                 isSortColumn: !0,
                 customStyle: { ...e, ...f },
                 className: "j-table__tbody-td j-table__tbody-td--drag",
                 ...h,
                 ...g,
-                children: aR.jsx(I, { iconName: "MdDragIndicator" }),
+                children: aP.jsx(I, { iconName: "MdDragIndicator" }),
               })
             : void 0,
           a
             .getVisibleCells()
             .map((a) =>
-              aR.jsx(
-                bZ,
+              aP.jsx(
+                bY,
                 {
                   className: `j-table__tbody-td j-table__tbody-td--${a.id}`,
                   customStyle: {
                     ...e,
                     width: l ? a.column.getSize() : null == e ? void 0 : e.width,
                   },
-                  children: aY.flexRender(a.column.columnDef.cell, a.getContext()),
+                  children: aW.flexRender(a.column.columnDef.cell, a.getContext()),
                 },
                 a.id
               )
@@ -1535,7 +1536,7 @@ const bP =
       isPaginationEnabled: a,
       paginationPosition: x,
       pageSize: b,
-      totalPage: e,
+      totalPage: d,
       paginationProps: y,
       paginationStyle: z,
       onPaginationChange: A,
@@ -1569,28 +1570,28 @@ const bP =
         [o]
       ),
       H = g.useMemo(() => [...F, ...G], [F, G]),
-      c = aY.useReactTable({
+      c = aW.useReactTable({
         data: C,
         columns: H,
         columnResizeMode: i ? "onChange" : void 0,
-        pageCount: a ? e : void 0,
+        pageCount: a ? d : void 0,
         state: { sorting: j ? k : void 0, pagination: a ? h : void 0 },
         manualPagination: a,
         manualSorting: !0,
-        getCoreRowModel: aY.getCoreRowModel(),
+        getCoreRowModel: aW.getCoreRowModel(),
         onPaginationChange: a ? E : void 0,
         onSortingChange: j ? D : void 0,
       }),
-      I = a$.useSensors(
-        a$.useSensor(a$.PointerSensor),
-        a$.useSensor(a$.MouseSensor),
-        a$.useSensor(a$.TouchSensor),
-        a$.useSensor(a$.KeyboardSensor, { coordinateGetter: aZ.sortableKeyboardCoordinates })
+      I = aY.useSensors(
+        aY.useSensor(aY.PointerSensor),
+        aY.useSensor(aY.MouseSensor),
+        aY.useSensor(aY.TouchSensor),
+        aY.useSensor(aY.KeyboardSensor, { coordinateGetter: aX.sortableKeyboardCoordinates })
       );
     g.useEffect(() => {
-      if (a && !(Number.isInteger(b) && Number.isInteger(e)))
+      if (a && !(Number.isInteger(b) && Number.isInteger(d)))
         throw Error("`pageSize` and `totalPage` should be required if pagination enabled");
-    }, [a, b, e]),
+    }, [a, b, d]),
       g.useEffect(() => {
         let a = null == k ? void 0 : k[0];
         w && a && w(a.id, a.desc ? "desc" : "asc");
@@ -1618,49 +1619,49 @@ const bP =
         let { currentIndex: b, newIndex: c } = Y(a);
         T && T(b, c, a);
       };
-    return aR.jsxs(bR, {
+    return aP.jsxs(bQ, {
       ref: B,
       customStyle: p,
       className: l,
       children: [
-        aR.jsxs(bT, {
+        aP.jsxs(bS, {
           className: "j-table",
           customStyle: { ...f, width: i ? c.getCenterTotalSize() : null == f ? void 0 : f.width },
           children: [
             u
-              ? aR.jsx(bU, {
+              ? aP.jsx(bT, {
                   className: "j-table__thead",
                   customStyle: q,
                   children: c
                     .getHeaderGroups()
                     .map((a) =>
-                      aR.jsxs(
-                        bX,
+                      aP.jsxs(
+                        bW,
                         {
                           className: `j-table__thead-tr j-table__thead-tr--${a.id}`,
                           customStyle: L,
                           children: [
                             U
-                              ? aR.jsx(bY, {
+                              ? aP.jsx(bX, {
                                   className: "j-table__thead-th j-table__thead-th--drag",
                                   customStyle: M,
                                 })
                               : void 0,
-                            aR.jsx(a$.DndContext, {
+                            aP.jsx(aY.DndContext, {
                               sensors: I,
-                              collisionDetection: a$.closestCenter,
+                              collisionDetection: aY.closestCenter,
                               modifiers: [
-                                a_.restrictToFirstScrollableAncestor,
-                                a_.restrictToHorizontalAxis,
-                                a_.restrictToParentElement,
+                                aZ.restrictToFirstScrollableAncestor,
+                                aZ.restrictToHorizontalAxis,
+                                aZ.restrictToParentElement,
                               ],
                               onDragEnd: Z,
-                              children: aR.jsx(aZ.SortableContext, {
+                              children: aP.jsx(aX.SortableContext, {
                                 items: a.headers,
-                                strategy: aZ.horizontalListSortingStrategy,
+                                strategy: aX.horizontalListSortingStrategy,
                                 children: a.headers.map((a) =>
-                                  aR.jsx(
-                                    b_,
+                                  aP.jsx(
+                                    b$,
                                     {
                                       header: a,
                                       isColumnResizeable: i,
@@ -1682,26 +1683,26 @@ const bP =
                     ),
                 })
               : void 0,
-            aR.jsx(bV, {
+            aP.jsx(bU, {
               className: "j-table__tbody",
               customStyle: r,
-              children: aR.jsx(a$.DndContext, {
+              children: aP.jsx(aY.DndContext, {
                 sensors: I,
-                collisionDetection: a$.closestCenter,
+                collisionDetection: aY.closestCenter,
                 modifiers: [
-                  a_.restrictToFirstScrollableAncestor,
-                  a_.restrictToVerticalAxis,
-                  a_.restrictToParentElement,
+                  aZ.restrictToFirstScrollableAncestor,
+                  aZ.restrictToVerticalAxis,
+                  aZ.restrictToParentElement,
                 ],
                 onDragEnd: K,
-                children: aR.jsx(aZ.SortableContext, {
+                children: aP.jsx(aX.SortableContext, {
                   items: c.getRowModel().rows,
-                  strategy: aZ.verticalListSortingStrategy,
+                  strategy: aX.verticalListSortingStrategy,
                   children: c
                     .getRowModel()
                     .rows.map((a) =>
-                      aR.jsx(
-                        b0,
+                      aP.jsx(
+                        b_,
                         {
                           row: a,
                           isRowSortable: U,
@@ -1716,32 +1717,32 @@ const bP =
               }),
             }),
             v
-              ? aR.jsx(bW, {
+              ? aP.jsx(bV, {
                   className: "j-table__tfoot",
                   customStyle: s,
                   children: c
                     .getFooterGroups()
                     .map((a) =>
-                      aR.jsxs(
-                        bX,
+                      aP.jsxs(
+                        bW,
                         {
                           className: `j-table__tfoot-tr j-table__tfoot-tr--${a.id}`,
                           style: Q,
                           children: [
                             U
-                              ? aR.jsx(bY, {
+                              ? aP.jsx(bX, {
                                   className: "j-table__tfooter-th j-table__tfooter-th--drag",
                                   customStyle: R,
                                 })
                               : void 0,
                             a.headers.map((a) =>
-                              aR.jsx(
-                                bY,
+                              aP.jsx(
+                                bX,
                                 {
                                   className: `j-table__tfoot-th j-table__tfoot-th--${a.id}`,
                                   colSpan: a.colSpan,
                                   customStyle: R,
-                                  children: aY.flexRender(
+                                  children: aW.flexRender(
                                     a.column.columnDef.footer,
                                     a.getContext()
                                   ),
@@ -1759,15 +1760,15 @@ const bP =
           ],
         }),
         a
-          ? aR.jsx(b$, {
+          ? aP.jsx(bZ, {
               paginationPosition: x || "left",
               customStyle: t,
-              children: aR.jsx(d.Pagination, {
+              children: aP.jsx(e.Pagination, {
                 ...y,
                 style: z,
                 current: h.pageIndex + 1,
                 pageSize: b,
-                total: Number.isInteger(b) && Number.isInteger(e) ? b * e : void 0,
+                total: Number.isInteger(b) && Number.isInteger(d) ? b * d : void 0,
                 onChange: J,
               }),
             })
@@ -1776,7 +1777,7 @@ const bP =
     });
   },
   aI = a.default.forwardRef(aH),
-  aJ = "jitera",
+  b0 = "jitera",
   b1 = "jiteraicon";
 let b2 = null;
 const b3 = { modals: [] };
@@ -1784,11 +1785,24 @@ const b3 = { modals: [] };
   (function (a) {
     (a.DEFAULT = "default"), (a.TOP = "top"), (a.CENTER = "center");
   })(exports.ModalPositionEnum || (exports.ModalPositionEnum = {}));
-class aK extends a.default.PureComponent {
+class aJ extends a.default.PureComponent {
   constructor(a) {
     super(a),
       (this.clearModal = (a) => {
-        a && this.setState((b) => ({ ...b, modals: b.modals.filter((b) => b.id !== a) }));
+        a &&
+          this.setState((b) => {
+            let c = b.modals.filter((b) => {
+              var c, d;
+              return (
+                b.id === a &&
+                  "function" ==
+                    typeof (null === (c = b.options) || void 0 === c ? void 0 : c.afterClose) &&
+                  (null === (d = b.options) || void 0 === d || d.afterClose()),
+                b.id !== a
+              );
+            });
+            return { ...b, modals: c };
+          });
       }),
       (this.hide = (c) => {
         let { modals: a } = this.state,
@@ -1815,14 +1829,14 @@ class aK extends a.default.PureComponent {
   }
   render() {
     let { modals: a } = this.state;
-    return aR.jsx(aR.Fragment, {
+    return aP.jsx(aP.Fragment, {
       children: a.map((a) =>
-        aR.jsx(
-          d.Modal,
+        aP.jsx(
+          e.Modal,
           {
             visible: a.visible,
             closable: !1,
-            onCancel: () => !1,
+            onCancel: () => this.hide(a.id),
             mask: !0,
             maskClosable: !0,
             footer: null,
@@ -1842,7 +1856,7 @@ class aK extends a.default.PureComponent {
     });
   }
 }
-const aL = {
+const aK = {
     show: (a, b = {}) => (null == b2 ? void 0 : b2.show(a, b)),
     hide(a) {
       null == b2 || b2.hide(a);
@@ -2770,24 +2784,26 @@ const aL = {
     imagePreviewOperationDisabledColor: "rgba(255, 255, 255, 0.25)",
   },
   b4 = g.createContext({ theme: l, toggleTheme(a) {} }),
-  aM = () => g.useContext(b4),
-  aN = ({ children: a }) => {
-    let [b, e] = g.useState(l),
-      f = (b) => {
+  aL = () => g.useContext(b4),
+  aM = ({ children: a, isPreview: b }) => {
+    let [c, f] = g.useState(l),
+      h = (b) => {
         let a = { ...l, ...b };
-        d.ConfigProvider.config({ theme: a, prefixCls: "jitera" }), e(a);
+        e.ConfigProvider.config({ theme: a, prefixCls: "jitera" }), f(a);
       },
-      c = g.useMemo(() => ({ theme: b, toggleTheme: f }), [b]);
-    return aR.jsx(d.ConfigProvider, {
-      prefixCls: aJ,
+      d = g.useMemo(() => ({ theme: c, toggleTheme: h }), [c]);
+    return aP.jsx(e.ConfigProvider, {
+      prefixCls: "jitera",
       iconPrefixCls: "jiteraicon",
-      children: aR.jsx(b4.Provider, {
-        value: c,
-        children: aR.jsxs(aR.Fragment, { children: [a, aR.jsx(aK, {})] }),
+      children: aP.jsx(b4.Provider, {
+        value: d,
+        children: aP.jsxs(aP.Fragment, {
+          children: [a, aP.jsx(aJ, {}), b ? void 0 : aP.jsx(a0.ToastContainer, {})],
+        }),
       }),
     });
   },
-  b5 = b.default(d.Drawer)`
+  b5 = b.default(e.Drawer)`
   && {
     .jitera-drawer-content-wrapper {
       box-shadow: inherit;
@@ -2808,14 +2824,14 @@ const aL = {
     (a.TOP = "top"), (a.RIGHT = "right"), (a.BOTTOM = "bottom"), (a.LEFT = "left");
   })(exports.DrawerPositionEnum || (exports.DrawerPositionEnum = {}));
 const b6 = [],
-  aO = {
+  aN = {
     show(b, { position: c, ...d } = {}) {
       let e = document.createDocumentFragment();
       function a(a = !0) {
         setTimeout(() => {
-          a1.render(
-            aR.jsx(aN, {
-              children: aR.jsx(b5, {
+          a_.render(
+            aP.jsx(aM, {
+              children: aP.jsx(b5, {
                 visible: a,
                 closable: !1,
                 title: null,
@@ -2876,7 +2892,7 @@ const b6 = [],
   (function (a) {
     (a.Box = "box"), (a.Underline = "underline");
   })(exports.OTPInputType || (exports.OTPInputType = {}));
-const aP = a.default.forwardRef((g, h) => {
+const aO = a.default.forwardRef((g, h) => {
   let {
       isPreview: i,
       responsiveVisibility: j,
@@ -2890,7 +2906,7 @@ const aP = a.default.forwardRef((g, h) => {
       otpInputType: o = "box",
       ...p
     } = g,
-    { theme: d } = aM(),
+    { theme: d } = aL(),
     e = {};
   o === exports.OTPInputType.Underline &&
     (e = { borderLeft: "unset", borderRight: "unset", borderTop: "unset" });
@@ -2902,57 +2918,47 @@ const aP = a.default.forwardRef((g, h) => {
     borderRadius: 4,
     border: `${d.borderWidthBase} solid ${d.borderColorBase}`,
   };
-  bi(b) && bi(a) && (f = { ...b, ...a });
-  let { classNames: q } = bf({ className: k, responsiveVisibility: j });
-  return aR.jsxs(b7, {
+  bh(b) && bh(a) && (f = { ...b, ...a });
+  let { classNames: q } = be({ className: k, responsiveVisibility: j });
+  return aP.jsxs(b7, {
     className: q,
     ref: h,
     children: [
-      aR.jsx(be.default, {
+      aP.jsx(bd.default, {
         isDisabled: i,
         ...p,
         numInputs: l,
         shouldAutoFocus: m,
         containerStyle: n,
         inputStyle: f,
-        className: bj("otp-cell", b, a),
+        className: bi("otp-cell", b, a),
       }),
-      !!c && aR.jsx(ai, { type: "danger", children: c }),
+      !!c && aP.jsx(ai, { type: "danger", children: c }),
     ],
   });
 });
-d.message.config({ prefixCls: `${aJ}-message` });
-const aQ = {
-  success(a, b, c) {
-    d.message.success(a, b, c);
-  },
-  error(a, b, c) {
-    d.message.error(a, b, c);
-  },
-  info(a, b, c) {
-    d.message.info(a, b, c);
-  },
-  warning(a, b, c) {
-    d.message.warning(a, b, c);
-  },
-  warn(a, b, c) {
-    d.message.warn(a, b, c);
-  },
-  loading(a, b, c) {
-    d.message.loading(a, b, c);
-  },
-  message: d.message,
-};
 Object.defineProperty(exports, "createColumnHelper", {
   enumerable: !0,
   get: function () {
-    return aY.createColumnHelper;
+    return aW.createColumnHelper;
   },
 }),
   Object.defineProperty(exports, "arrayMove", {
     enumerable: !0,
     get: function () {
-      return aZ.arrayMove;
+      return aX.arrayMove;
+    },
+  }),
+  Object.defineProperty(exports, "Toast", {
+    enumerable: !0,
+    get: function () {
+      return a0.toast;
+    },
+  }),
+  Object.defineProperty(exports, "ToastContainer", {
+    enumerable: !0,
+    get: function () {
+      return a0.ToastContainer;
     },
   }),
   (exports.Box = E),
@@ -2964,7 +2970,7 @@ Object.defineProperty(exports, "createColumnHelper", {
   (exports.DEFAULT_TABLE_BORDER_STYLES = aG),
   (exports.DateTimePicker = ax),
   (exports.Divider = az),
-  (exports.Drawer = aO),
+  (exports.Drawer = aN),
   (exports.Footer = M),
   (exports.Form = O),
   (exports.HamburgerMenu = ay),
@@ -2977,9 +2983,9 @@ Object.defineProperty(exports, "createColumnHelper", {
   (exports.List = as),
   (exports.Menu = al),
   (exports.MenuItem = am),
-  (exports.Modal = aL),
-  (exports.ModalComponent = aK),
-  (exports.OTPInput = aP),
+  (exports.Modal = aK),
+  (exports.ModalComponent = aJ),
+  (exports.OTPInput = aO),
   (exports.Page = ao),
   (exports.Radio = at),
   (exports.RichText = aF),
@@ -2991,10 +2997,9 @@ Object.defineProperty(exports, "createColumnHelper", {
   (exports.Table = aI),
   (exports.Text = ai),
   (exports.TextArea = au),
-  (exports.ThemeProvider = aN),
-  (exports.Toast = aQ),
+  (exports.ThemeProvider = aM),
   (exports.assertUnreachable = G),
   (exports.defaultTheme = l),
   (exports.getIconComponent = F),
   (exports.getIconSet = H),
-  (exports.useTheme = aM);
+  (exports.useTheme = aL);

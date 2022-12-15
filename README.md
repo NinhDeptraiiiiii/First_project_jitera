@@ -15,8 +15,8 @@ NEXTAUTH_URL="leave it as your nextjs url or custom server"
 Config .env for authentication: the information get from our exported API project
 
 ```
-APP_CLIENT_ID=''
-APP_CLIENT_SECRET=''
+NEXT_APP_CLIENT_ID=''
+NEXT_APP_CLIENT_SECRET=''
 ```
 
 Run on your local
@@ -187,8 +187,8 @@ const authenticationInfo = sessionStorage.getAuthenticationInfo();
 | Key                                | Data Type | Example Value                                 | Description                                                                 |
 | ---------------------------------- | --------- | --------------------------------------------- | --------------------------------------------------------------------------- |
 | NEXT_PUBLIC_ACCESS_TOKEN_THRESHOLD | number    | 120000                                        | How long access token will be expired in milliseconds.                      |
-| APP_CLIENT_ID                      | string    | randomstring                                  | Obtained from backend configuration.                                        |
-| APP_CLIENT_SECRET                  | string    | randomstring                                  | Obtained from backend configuration.                                        |
+| NEXT_APP_CLIENT_ID                 | string    | randomstring                                  | Obtained from backend configuration.                                        |
+| NEXT_APP_CLIENT_SECRET             | string    | randomstring                                  | Obtained from backend configuration.                                        |
 | NEXT_PUBLIC_API_URL                | string    | https://api-68.review.staging.jitera.app      | API URL                                                                     |
 | NEXTAUTH_URL                       | string    | https://frontend-68.review.staging.jitera.app | Canonical URL of the site.                                                  |
 | NEXTAUTH_SECRET                    | string    | secret                                        | Used to encrypt the NextAuth.js JWT, and to hash email verification tokens. |

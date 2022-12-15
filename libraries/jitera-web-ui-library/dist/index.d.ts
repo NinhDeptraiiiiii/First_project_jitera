@@ -19,7 +19,6 @@ import {
   DrawerProps,
   TabsProps,
   PaginationProps,
-  MessageArgsProps,
   ModalProps as ModalProps$1,
 } from "antd";
 export { CheckboxOptionType as RadioCheckboxOptionType } from "antd";
@@ -43,7 +42,7 @@ import {
 } from "@tanstack/table-core";
 import { DragEndEvent } from "@dnd-kit/core";
 import { OtpInputProps } from "react-otp-input";
-import * as antd_lib_message from "antd/lib/message";
+export { toast as Toast, ToastContainer, ToastContainerProps } from "react-toastify";
 export { createColumnHelper } from "@tanstack/react-table";
 export { arrayMove } from "@dnd-kit/sortable";
 
@@ -608,40 +607,6 @@ declare const OTPInput: React.ForwardRefExoticComponent<
   OTPInputProps & React.RefAttributes<HTMLDivElement>
 >;
 
-declare const Toast: {
-  success(
-    ReactComponent: React.ReactNode | string | MessageArgsProps,
-    duration?: number,
-    onClose?: () => void
-  ): void;
-  error(
-    ReactComponent: React.ReactNode | string | MessageArgsProps,
-    duration?: number,
-    onClose?: () => void
-  ): void;
-  info(
-    ReactComponent: React.ReactNode | string | MessageArgsProps,
-    duration?: number,
-    onClose?: () => void
-  ): void;
-  warning(
-    ReactComponent: React.ReactNode | string | MessageArgsProps,
-    duration?: number,
-    onClose?: () => void
-  ): void;
-  warn(
-    ReactComponent: React.ReactNode | string | MessageArgsProps,
-    duration?: number,
-    onClose?: () => void
-  ): void;
-  loading(
-    ReactComponent: React.ReactNode | string | MessageArgsProps,
-    duration?: number,
-    onClose?: () => void
-  ): void;
-  message: antd_lib_message.MessageApi;
-};
-
 declare enum ModalPositionEnum {
   DEFAULT = "default",
   TOP = "top",
@@ -663,7 +628,6 @@ interface ModalOptions
     | "title"
     | "closeIcon"
     | "bodyStyle"
-    | "mask"
   > {
   position?: `${ModalPositionEnum}`;
 }
@@ -692,10 +656,10 @@ declare const Modal: {
   hide(id?: string): void;
 };
 
-declare type ThemeProviderProps = {
+declare type ThemeProviderProps = Pick<PreviewProps, "isPreview"> & {
   children: ReactElement;
 };
-declare const ThemeProvider: ({ children }: ThemeProviderProps) => JSX.Element;
+declare const ThemeProvider: ({ children, isPreview }: ThemeProviderProps) => JSX.Element;
 
 declare const defaultTheme: {
   blueBase: string;
@@ -2628,7 +2592,6 @@ export {
   TextProps,
   TextTypeEnum,
   ThemeProvider,
-  Toast,
   assertUnreachable,
   defaultTheme,
   getIconComponent,

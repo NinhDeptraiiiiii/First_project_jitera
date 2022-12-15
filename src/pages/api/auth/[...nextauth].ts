@@ -75,8 +75,8 @@ const handleRefreshToken = async (refreshToken: string) => {
       data: {
         grant_type: "refresh_token",
         refresh_token: refreshToken,
-        client_id: `${process.env.APP_CLIENT_ID}`,
-        client_secret: `${process.env.APP_CLIENT_SECRET}`,
+        client_id: `${process.env.NEXT_APP_CLIENT_ID}`,
+        client_secret: `${process.env.NEXT_APP_CLIENT_SECRET}`,
       },
     });
     if (res.data?.access_token) {
@@ -105,8 +105,8 @@ const handleRefreshToken = async (refreshToken: string) => {
 const prepareAuthenticationFormData = (table: string) => {
   const data = new URLSearchParams();
   data.append("grant_type", "password");
-  data.append("client_id", `${process.env.APP_CLIENT_ID}`);
-  data.append("client_secret", `${process.env.APP_CLIENT_SECRET}`);
+  data.append("client_id", `${process.env.NEXT_APP_CLIENT_ID}`);
+  data.append("client_secret", `${process.env.NEXT_APP_CLIENT_SECRET}`);
   data.append("scope", table);
 
   return data;
